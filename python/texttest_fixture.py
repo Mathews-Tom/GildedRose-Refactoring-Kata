@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 
-from gilded_rose import *
+import sys
+
+from gilded_rose import GildedRose, Item, ItemUpdaterFactory
 
 
-def main():
+def main() -> None:
     print("OMGHAI!")
-    items = [
+    items: list[Item] = [
         Item(name="+5 Dexterity Vest", sell_in=10, quality=20),
         Item(name="Aged Brie", sell_in=2, quality=0),
         Item(name="Elixir of the Mongoose", sell_in=5, quality=7),
@@ -17,8 +19,8 @@ def main():
         Item(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=49),
         Item(name="Conjured Mana Cake", sell_in=3, quality=6),  # <-- :O
     ]
-    days = 2
-    import sys
+    days: int = 2
+
     if len(sys.argv) > 1:
         days = int(sys.argv[1]) + 1
     for day in range(days):
@@ -27,6 +29,7 @@ def main():
         for item in items:
             print(item)
         print("")
+        ItemUpdaterFactory.configure_defaults()
         GildedRose(items).update_quality()
 
 
