@@ -28,7 +28,7 @@ class Item:
 
     def __repr__(self) -> str:
         """Return string representation of the item."""
-        return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
+        return f"{self.name}, {self.sell_in}, {self.quality}"
 
 
 class ItemUpdater(ABC):
@@ -77,11 +77,6 @@ class ItemUpdaterFactory:
 
     _registry: dict[str, type[ItemUpdater]] = {}
     _instances: dict[type[ItemUpdater], ItemUpdater] = {}
-
-    @classmethod
-    def configure_defaults(cls) -> None:
-        """Ensure built-in updaters are registered (idempotent)."""
-        _ = (AgedBrieUpdater, SulfurasUpdater, BackstagePassUpdater, ConjuredItemUpdater, NormalItemUpdater)
 
     @classmethod
     def register(cls, keyword: str, updater_cls: type[ItemUpdater]) -> None:

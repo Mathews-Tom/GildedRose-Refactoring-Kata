@@ -3,7 +3,7 @@ from __future__ import print_function
 
 import sys
 
-from gilded_rose import GildedRose, Item, ItemUpdaterFactory
+from gilded_rose import GildedRose, Item
 
 
 def main() -> None:
@@ -29,7 +29,6 @@ def main() -> None:
         for item in items:
             print(item)
         print("")
-        ItemUpdaterFactory.configure_defaults()
         GildedRose(items).update_quality()
 
 

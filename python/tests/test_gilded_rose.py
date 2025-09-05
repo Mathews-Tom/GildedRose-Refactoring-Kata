@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from gilded_rose import GildedRose, Item, ItemUpdaterFactory
+from gilded_rose import GildedRose, Item
 
 
 class GildedRoseTest(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls) -> None:
-        ItemUpdaterFactory.configure_defaults()
 
     def test_normal_item_quality_decreases_by_1(self):
         items = [Item("Normal Item", 10, 20)]
